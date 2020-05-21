@@ -3,7 +3,6 @@ import itertools
 
 
 # Define classes
-
 class Movie:
     def __init__(self, title, year, typ):
         self.title = title
@@ -38,7 +37,6 @@ class Series(Movie):
         return f"{self.title} S{self.season}E{self.episode}"
     
 # Define the elements of base_list    
-
 Pulp = Movie(title = "Pulp Fiction", year = "1994", typ = "kryminał")
 Cher = Series(title = "Cherobyl", year = "2019", typ = "Dramat", season = "01", episode = "03")
 Aven = Movie(title= "Avengers", year = "2012", typ = "Sci-Fi")
@@ -53,7 +51,6 @@ base_list.append(Fri)
 list_to_sort=[]
 
 # Function to print objects from class only Movie
-
 def get_movies(a):
     list_to_sort = [i for i in a if i.__class__.__name__ == 'Movie']
     list_to_sort = sorted(list_to_sort, key=lambda Movie: Movie.title)
@@ -61,7 +58,6 @@ def get_movies(a):
         print(i)
 
 # Function to print objects from class only Series       
-
 def get_series(a):
     list_to_sort = [i for i in a if i.__class__.__name__ == 'Series']
     list_to_sort = sorted(list_to_sort, key=lambda Series: Series.title)
@@ -69,7 +65,6 @@ def get_series(a):
         print(i)
 
 # Search function
-
 def search(a, name):
     for i in a:
         if str(i.title) == name:
@@ -97,8 +92,8 @@ def generate_views(a):
 
 generate_views(base_list)
 
-# print out the top title by views
 
+# print out the top title by views
 def top_titles(a, amount, content_type):
     top = [i for i in a if i.__class__.__name__ == content_type]
     top = sorted(top, key=lambda Series: Series.current_views, reverse=True)
