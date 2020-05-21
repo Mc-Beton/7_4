@@ -1,4 +1,8 @@
+import random
 import itertools
+
+
+# Define classes
 
 class Movie:
     def __init__(self, title, year, typ):
@@ -15,6 +19,14 @@ class Movie:
     def __str__(self):
         return f"{self.title}, {self.year}"
 
+    @property
+    def current_views(self):
+        return self._current_views
+    
+    @current_views.setter
+    def current_views(self, value):
+        self._current_views = value
+
 
 class Series(Movie):
     def __init__(self, season, episode, *args, **kwargs):
@@ -25,6 +37,7 @@ class Series(Movie):
     def __str__(self):
         return f"{self.title} S{self.season}E{self.episode}"
     
+# Define the elements of base_list    
 
 Pulp = Movie(title = "Pulp Fiction", year = "1994", typ = "kryminał")
 Cher = Series(title = "Cherobyl", year = "2019", typ = "Dramat", season = "01", episode = "03")
@@ -39,13 +52,15 @@ base_list.append(Fri)
 
 list_to_sort=[]
 
+# Function to print objects from class only Movie
+
 def get_movies(a):
     list_to_sort = [i for i in a if i.__class__.__name__ == 'Movie']
     list_to_sort = sorted(list_to_sort, key=lambda Movie: Movie.title)
     for i in list_to_sort:
         print(i)
 
-        
+# Function to print objects from class only Series       
 
 def get_series(a):
     list_to_sort = [i for i in a if i.__class__.__name__ == 'Series']
@@ -53,9 +68,26 @@ def get_series(a):
     for i in list_to_sort:
         print(i)
 
+# Search function
 
-get_movies(base_list)
-get_series(base_list)
+def search(a, name):
+    for i in a:
+        if str(i.title) == name:
+            print(i)
+
+# Generate random views
+
+def generate_views(a):
+    i = random.choice(a)
+    j = int(random.choice(range(101)))
+    i.play(j)
+    print(i)
+    print(i.current_views)
+
+generate_views(base_list)
+
+
+
     
 
 
