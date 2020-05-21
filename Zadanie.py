@@ -75,17 +75,42 @@ def search(a, name):
         if str(i.title) == name:
             print(i)
 
-# Generate random views
 
+
+# decorator for generating views
+def generate_multi(func):
+    def wrap(*args):
+        for i in range(11):
+            func(*args)
+            
+    return wrap
+
+
+# Generate random views
+@generate_multi
 def generate_views(a):
     i = random.choice(a)
-    j = int(random.choice(range(101)))
+    j = random.choice(range(101))
     i.play(j)
     print(i)
     print(i.current_views)
 
 generate_views(base_list)
 
+# print out the top title by views
+
+def top_titles(a, amount, content_type):
+    top = [i for i in a if i.__class__.__name__ == content_type]
+    top = sorted(top, key=lambda Series: Series.current_views, reverse=True)
+    n=0
+    for i in top:
+        print(i)
+        print(i.current_views)
+        n=n+1
+        if n == amount:
+            break
+
+top_titles(base_list, 1, "Series")
 
 
     
