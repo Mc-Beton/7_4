@@ -1,40 +1,9 @@
 import random
 import itertools
+from movie import Movie
+from series import Series
 
 
-# Define classes
-class Movie:
-    def __init__(self, title, year, typ):
-        self.title = title
-        self.year = year
-        self.typ = typ
-
-        #variables
-        self._current_views = 0
-
-    def play(self, step=1):
-        self.current_views += step
-
-    def __str__(self):
-        return f"{self.title}, {self.year}"
-
-    @property
-    def current_views(self):
-        return self._current_views
-    
-    @current_views.setter
-    def current_views(self, value):
-        self._current_views = value
-
-
-class Series(Movie):
-    def __init__(self, season, episode, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.season = season
-        self.episode = episode
-
-    def __str__(self):
-        return f"{self.title} S{self.season}E{self.episode}"
     
 # Define the elements of base_list    
 Pulp = Movie(title = "Pulp Fiction", year = "1994", typ = "kryminał")
@@ -51,60 +20,97 @@ base_list.append(Fri)
 list_to_sort=[]
 
 # Function to print objects from class only Movie
-def get_movies(a):
-    list_to_sort = [i for i in a if i.__class__.__name__ == 'Movie']
+def get_movies():
+    list_to_sort = [i for i in base_list if i.__class__.__name__ == 'Movie']
     list_to_sort = sorted(list_to_sort, key=lambda Movie: Movie.title)
     for i in list_to_sort:
         print(i)
 
 # Function to print objects from class only Series       
-def get_series(a):
-    list_to_sort = [i for i in a if i.__class__.__name__ == 'Series']
+def get_series():
+    list_to_sort = [i for i in base_list if i.__class__.__name__ == 'Series']
     list_to_sort = sorted(list_to_sort, key=lambda Series: Series.title)
     for i in list_to_sort:
         print(i)
 
+search_list=[]
 # Search function
-def search(a, name):
-    for i in a:
+def search(name):
+    for i in base_list:
         if str(i.title) == name:
             print(i)
-
-
 
 # decorator for generating views
 def generate_multi(func):
     def wrap(*args):
-        for i in range(11):
-            func(*args)
-            
+        for i in range(10):
+            func(*args)       
     return wrap
-
 
 # Generate random views
 @generate_multi
-def generate_views(a):
-    i = random.choice(a)
+def generate_views():
+    i = random.choice(base_list)
     j = random.choice(range(101))
     i.play(j)
     #print(i)
     #print(i.current_views)
 
-generate_views(base_list)
-
-
 # print out the top title by views
-def top_titles(a, amount, content_type):
-    top = [i for i in a if i.__class__.__name__ == content_type.__name__]
-    top = sorted(top, key=lambda content_type: content_type.current_views, reverse=True)
+def top_titles(amount, content_type):
+    top = [i for i in base_list if i.__class__.__name__ == content_type.__name__]
+    top = sorted(top, key=lambda movie: movie.current_views, reverse=True)
     n=0
     for i in top:
         print(f"{i}, views = {i.current_views}")
-        n=n+1
+        n=+1
         if n == amount:
             break
 
-top_titles(base_list, 2, Movie)
+def print_help():
+    print("List of available commands:\n movie list - print out all movies in the list\n series list - print out all series list\n "
+        "generate random views - it will generate fake views for random items in library list\n search - it will find what u want\n " 
+        "top titles - it will print out top titles of movies or series\n exit - terminate program")
+
+# Available commands
+def task():
+    while True:
+        task1 = input("What would you like to do? ")
+        if task1 == "help_me":
+            print_help()
+        
+        elif task1 == "movie list":
+            get_movies()
+        
+        elif task1 == "series list":
+            get_series()
+        
+        elif task1 == "generate random views":
+            print("generated random views")
+            generate_views()
+        
+        elif task1 == "search":
+            name = input("What are you looking for? ")
+            search(name)
+        
+        elif task1 == "top titles":
+            name=input("Top series or movies ")
+            a=input("How long shall the list be? ")
+            if name == "movies":
+                top_titles(a, Movie)
+            elif name == "series":
+                top_titles(a, Series)
+        
+        elif task1 == "exit":
+            print("bye")
+            break
+        else:
+            print("there is no such command, type help_me for list of available commands")
+
+# Call out the program
+if __name__ == "__main__":
+    print("Hello! I am a simple program to do some stuff. Wanna check me out? Type in help_me for commands ;)")
+    task()
 
 
     
