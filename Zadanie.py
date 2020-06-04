@@ -1,4 +1,3 @@
-import random
 import itertools
 from movie import Movie
 from series import Series
@@ -10,22 +9,6 @@ from library import top_list
 base_list = Library()
 list_to_sort=[]
           
-
-# decorator for generating views
-def generate_multi(func):
-    def wrap(*args):
-        for i in range(10):
-            func(*args)       
-    return wrap
-
-# Generate random views
-@generate_multi
-def generate_views():
-    i = random.choice(base_list)
-    j = random.choice(range(101))
-    i.play(j)
-    #print(i)
-    #print(i.current_views)
 
 def print_help():
     print("List of available commands:\n movie list - print out all movies in the list\n series list - print out all series list\n "
@@ -54,7 +37,7 @@ def task():
         
         elif task1 == "generate random views":
             print("generated random views")
-            generate_views()
+            base_list.generate_views()
         
         elif task1 == "search":
             search_list.clear()
@@ -63,28 +46,21 @@ def task():
                 print(i)
         
         elif task1 == "top titles":
-            name=input("Top series or movies ")
-            a=input("How long shall the list be? ")
+            name=input("Top series or movies ")           
             if name == "movies":
-                base_list.top_titles(a, Movie)
+                base_list.top_titles(content_type = Movie)
                 for i in top_list:
-                    print(i)
+                    print(f"{i} with views {i.current_views}")
             elif name == "series":
-                base_list.top_titles(a, Series)
+                base_list.top_titles(content_type = Series)
                 for i in top_list:
-                    print(i)
+                    print(f"{i} with views {i.current_views}")
             else:
                 print("There is no such list")
 
-#        elif task1 == "play":
-#            a = input("What movie/seires would you like to watch? ")
-#            for i in base_list:
-#                if a == str(i.title):
-#                    i.play()
-#                    print(f"You've seen this for the {i.current_views} time")
-#                    break
+        elif task1 == "play":
+            base_list.play_sth()
                 
-
         elif task1 == "add movie":
             base_list.add_movie()
         
