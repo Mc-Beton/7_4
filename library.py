@@ -95,10 +95,13 @@ class Library:
                     break
                 elif i.__class__ == Series:
                     seas = input("Which season would You like to watch? ")
+                    seaso=[]
                     if str(i.season) == seas:
+                        seaso.append(i)
                         epi = input("Which episode? ")
-                        if str(i.episode) == epi:
-                            i.play()
-                            print(f"You've seen this for the {i.current_views} time")
+                        for j in seaso:
+                            if str(j.episode) == epi:
+                                j.play()
+                                print(f"You've seen this for the {i.current_views} time")
                     break
                         
