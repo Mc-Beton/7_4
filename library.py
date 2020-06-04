@@ -1,5 +1,6 @@
 from movie import Movie
 from series import Series
+import random
 
 top_list=[]
 search_list=[]
@@ -7,12 +8,14 @@ class Library:
     def __init__(self):       
         self.video_lib = []
 
+    # Function to add movies to base
     def add_movie(self):
         i = input("What is the title? ")
         j = input("What year was it made? ")
         k = input("What type of movie is it? ")
-        self.video_lib.append(Movie(title = i, year = j, typ = k))
+        self.video_lib.append(Movie(title = i, year = j, gener = k))
     
+    # Function to add series to base
     def add_series(self):
         i = input("What is the title? ")
         j = input("What year was it made? ")
@@ -21,8 +24,9 @@ class Library:
         for s in range(l):
             m = int(input(f"How many episodes does season {s+1} have? "))
             for e in range(m):
-                self.video_lib.append(Series(title = i, year = j, typ = k, season = str(s+1), episode = str(e+1)))
+                self.video_lib.append(Series(title = i, year = j, gener = k, season = str(s+1), episode = str(e+1)))
 
+    # Function to print objects from class only Movie
     def get_movies(self):
         list_to_sort = [i for i in self.video_lib if i.__class__.__name__ == 'Movie']
         list_to_sort = sorted(list_to_sort, key=lambda Movie: Movie.title)
@@ -51,7 +55,7 @@ class Library:
         if by_what == "type":
             name = input("What type of movie/series you are looking for ")
             for i in self.video_lib:
-                if str(i.typ) == name:
+                if str(i.gener) == name:
                     search_list.append(i)
             return search_list
         if by_what == "year":
@@ -61,14 +65,30 @@ class Library:
                     search_list.append(i)
             return search_list
 
-    
-    def top_titles(self, amount, content_type):
+    # Top x movies/seriesshown by current_views
+    def top_titles(self, content_type):
         top = [i for i in self.video_lib if i.__class__.__name__ == content_type.__name__]
-        top = sorted(top, key=lambda movie: movie.current_views, reverse=True)
+        top = sorted(top, key=lambda content_type: content_type.current_views, reverse=True)
         n=0
-        for i in top:
-            top_list.append(i)
-            n=+1
-            if n == amount:
+        a=int(input("How long shall the list be? "))
+        top_list = top[:a]
+        for i in top_list:
+            print(f"{i} with views {i.current_views}")
+        return top_list
+        
+    
+    def generate_views(self):
+        for k in range(10):
+            i = random.choice(self.video_lib)
+            j = random.choice(range(101))
+            i.play(j)
+            #print(i)
+            #print(i.current_views)
+    
+    def play_sth(self):
+        a = input("What movie/seires would you like to watch? ")
+        for i in self.video_lib:
+            if a == str(i.title):
+                i.play()
+                print(f"You've seen this for the {i.current_views} time")
                 break
-        return(top_list)

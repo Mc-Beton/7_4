@@ -1,9 +1,9 @@
 # Define classes
 class Movie:
-    def __init__(self, title, year, typ):
+    def __init__(self, title, year, gener):
         self.title = title
         self.year = year
-        self.typ = typ
+        self.gener = gener
 
         #variables
         self._current_views = 0
@@ -12,7 +12,7 @@ class Movie:
         self.current_views += step
 
     def __str__(self):
-        return f"{self.title}, {self.year}, {self.typ}"
+        return f"{self.title}, {self.year}, {self.gener}"
 
     @property
     def current_views(self):
