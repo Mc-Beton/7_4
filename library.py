@@ -8,7 +8,7 @@ class Library:
     def __init__(self):       
         self.video_lib = []
 
-    # Function to add movies to base
+    # Function to add movies to base list
     def add_movie(self):
         i = input("What is the title? ")
         j = input("What year was it made? ")
@@ -88,7 +88,17 @@ class Library:
     def play_sth(self):
         a = input("What movie/seires would you like to watch? ")
         for i in self.video_lib:
-            if a == str(i.title):
-                i.play()
-                print(f"You've seen this for the {i.current_views} time")
-                break
+            if str(i.title) == a:
+                if i.__class__ == Movie:
+                    i.play()
+                    print(f"You've seen this for the {i.current_views} time")
+                    break
+                elif i.__class__ == Series:
+                    seas = input("Which season would You like to watch? ")
+                    if str(i.season) == seas:
+                        epi = input("Which episode? ")
+                        if str(i.episode) == epi:
+                            i.play()
+                            print(f"You've seen this for the {i.current_views} time")
+                    break
+                        
