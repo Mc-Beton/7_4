@@ -89,19 +89,16 @@ class Library:
         a = input("What movie/seires would you like to watch? ")
         for i in self.video_lib:
             if str(i.title) == a:
-                if i.__class__ == Movie:
+                if isinstance(i, Series):
+                    seas = input("Which season would You like to watch? ")
+                    epi = input("Which episode? ")
+                    if str(i.season) == seas and str(i.episode) == epi:
+                        i.play()
+                        print(f"You've seen this for the {i.current_views} time")
+                        break
+                elif isinstance(i, Movie):
                     i.play()
                     print(f"You've seen this for the {i.current_views} time")
                     break
-                elif i.__class__ == Series:
-                    seas = input("Which season would You like to watch? ")
-                    seaso=[]
-                    if str(i.season) == seas:
-                        seaso.append(i)
-                        epi = input("Which episode? ")
-                        for j in seaso:
-                            if str(j.episode) == epi:
-                                j.play()
-                                print(f"You've seen this for the {i.current_views} time")
-                    break
+                
                         
