@@ -4,6 +4,7 @@ import random
 
 top_list=[]
 search_list=[]
+seaso=[]
 class Library:
     def __init__(self):       
         self.video_lib = []
@@ -89,16 +90,21 @@ class Library:
         a = input("What movie/seires would you like to watch? ")
         for i in self.video_lib:
             if str(i.title) == a:
-                if isinstance(i, Series):
-                    seas = input("Which season would You like to watch? ")
-                    epi = input("Which episode? ")
-                    if str(i.season) == seas and str(i.episode) == epi:
-                        i.play()
-                        print(f"You've seen this for the {i.current_views} time")
+                seaso.append(i)
+        for i in seaso:
+            if isinstance(i, Series):
+                seas = input("Which season would You like to watch? ")
+                epi = input("Which episode? ")
+                for k in seaso:
+                    if str(k.season) == seas and str(k.episode) == epi:
+                        k.play()
+                        print(f"You've seen this for the {k.current_views} time")
                         break
-                elif isinstance(i, Movie):
-                    i.play()
-                    print(f"You've seen this for the {i.current_views} time")
-                    break
+            elif isinstance(i, Movie):
+                i.play()
+                print(f"You've seen this for the {i.current_views} time")
+                break
                 
-                        
+"""
+                    
+"""                    
