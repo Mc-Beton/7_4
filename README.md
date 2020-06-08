@@ -27,6 +27,11 @@ And there shows up the first line greeting us with a tip, how to get started.
 - play - if You're watch a movie or series, you may track how many times You have seen this particular content. For series it will ask for the season and episode you want to tick.
 - exit - turn of the program
 
+## Getting started/examples
+First of all, this is currently a project which **doesn't store information for later use** (doesn't save the given information in a file), so it's only to check whether all the given commands really work.
+### Examples
+Lets turn it on:
+> python zadanie.py
 Break down into end to end tests
 Explain what these tests test and why
 
