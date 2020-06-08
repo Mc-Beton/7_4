@@ -40,76 +40,108 @@ What would you like to do?
 
 Lets start with "**movie list**".
 > List of movies in base:
-What would you like to do?
+>What would you like to do?
 
 As You can see there is nothing in this list (as mentioned above), lets add something to our library:
 > **add movie**
 
 Here we will be asked some questions about the content we want to add, lets say we like the first Avengers:
 > What is the title? **Avengers** 
-What year was it made? **2012**
-What type of movie is it? **Sci Fi**
+>What year was it made? **2012**
+>What type of movie is it? **Sci Fi**
 
 And here we go. Our first position in our library. Lets check it out if it's still there:
 > **movie list**
-List of movies in base:
-Avengers, 2012, Sci Fi
+>List of movies in base:
+>Avengers, 2012, Sci Fi
 
 Lest try some series:
 > **add series**
 
 Here we go again just like with a movie but it will ask for more information:
 > What is the title? **Dark**
-What year was it made? **2018**
-What type of series is it? **Sci Fi**
-How many seasons does it have? **2**
-How many episodes does season 1 have? **6**
-How many episodes does season 2 have? **7**
+>What year was it made? **2018**
+>What type of series is it? **Sci Fi**
+>How many seasons does it have? **2**
+>How many episodes does season 1 have? **6**
+>How many episodes does season 2 have? **7**
 
 And how does it look like in our library:
 > **series list**
-List of series in base:
-Dark S1E1
-Dark S1E2
-Dark S1E3
-Dark S1E4
-Dark S1E5
-Dark S1E6
-Dark S2E1
-Dark S2E2
-Dark S2E3
-Dark S2E4
-Dark S2E5
-Dark S2E6
-Dark S2E7
+>List of series in base:
+>Dark S1E1
+>Dark S1E2
+>Dark S1E3
+>Dark S1E4
+>Dark S1E5
+>Dark S1E6
+>Dark S2E1
+>Dark S2E2
+>Dark S2E3
+>Dark S2E4
+>Dark S2E5
+>Dark S2E6
+>Dark S2E7
 
+Now we are watching someting, lets say the Avengers:
+>**play**
+> What movie/seires would you like to watch? 
 
-Give an example
-And coding style tests
-Explain what these tests test and why
+Type in the title of movie:
+> **Avengers**
+> You've seen this for the 1 time
 
-Give an example
-Deployment
-Add additional notes about how to deploy this on a live system
+Lets do it again:
+What would you like to do? **play**
+What movie/seires would you like to watch? **Avengers**
+You've seen this for the 2 time
 
-Built With
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+What if We want cheat a bit make some random views in our library?
+> **generate random views**
 
-Versioning
-We use SemVer for versioning. For the versions available, see the tags on this repository.
+Lets do it a couple of times:
+> **generate random views**
+...
 
-Authors
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
+Now we can check out which content is the most popular in our library:
+> **top titles**
+> Top series or movies?
 
-License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+Lets go for series:
+> **series**
+>How long shall the list be? **4**
+>Dark S2E7 with views 155
+>Dark S2E5 with views 81
+>Dark S1E5 with views 67
+>Dark S2E1 with views 52
 
-Acknowledgments
-Hat tip to anyone whose code was used
-Inspiration
-etc
+And finaly "search"
+> **search**
+> Choose what You ar elooking for: title, type, year
+
+Try "type":
+> **type**
+>What type of movie/series you are looking for **Sci Fi**
+>Dark S1E1
+>Dark S1E2
+>Dark S1E3
+>Dark S1E4
+>Dark S1E5
+>Dark S1E6
+>Dark S2E1
+>Dark S2E2
+>Dark S2E3
+>Dark S2E4
+>Dark S2E5
+>Dark S2E6
+>Dark S2E7
+>Avengers, 2012, Sci Fi
+
+I guess we are done with some examples. ;)
+
+## Later updates.
+Soon the program will be provided with saving the library for later use and maybe more attractive in Tkinter.
+
+## Authors
+Filip Gabrys - Initial work
+With help from his mentor from the Kodilla course.
