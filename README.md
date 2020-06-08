@@ -38,13 +38,13 @@ Lets turn it on:
 ```
 And there we get greetings from the program and a small assist how get started.
 ```
-Hello! I am a simple program to do some stuff. Wanna check me out? Type in help_me for commands ;)
-What would you like to do? 
+>Hello! I am a simple program to do some stuff. Wanna check me out? Type in help_me for commands ;)
+>What would you like to do? 
 ```
 Lets start with "**movie list**".
 ```
-List of movies in base:
-What would you like to do?
+>List of movies in base:
+>What would you like to do?
 ```
 As You can see there is nothing in this list (as mentioned above), lets add something to our library:
 ```
