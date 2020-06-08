@@ -1,18 +1,19 @@
-#**Movie/Series Library**
+# **Movie/Series Library**
 
 It's a simple program to store basic info about movies and series and register how many times a particular position has been viewed.
 
-##Getting Started
+## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system. 
 Just clone or download the files into a folder and it's ready to be used.
 
-##How to use it.
-Two ways to get it running.
-###By CMD
+## How to use it.
+
+### By CMD
 In the proper directory of dwonloaded files type in:
-      python zadanie.py
+
+> python zadanie.py
       
-And there shows up the first line
+And there shows up the first line greeting us with a tip, how to get started.
 
 Break down into end to end tests
 Explain what these tests test and why
