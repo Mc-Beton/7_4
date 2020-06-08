@@ -32,15 +32,15 @@ And there shows up the first line greeting us with a tip, how to get started.
 First of all, this is currently a project which **doesn't store information for later use** (doesn't save the given information in a file), so it's only to check whether all the given commands really work.
 ### Examples
 Lets turn it on:
-> **python zadanie.py**
+    **python zadanie.py**
 
 And there we get greetings from the program and a small assist how get started.
-> Hello! I am a simple program to do some stuff. Wanna check me out? Type in help_me for commands ;)
-What would you like to do? 
+    Hello! I am a simple program to do some stuff. Wanna check me out? Type in help_me for commands ;)
+    What would you like to do? 
 
 Lets start with "**movie list**".
-> List of movies in base:
->What would you like to do?
+    List of movies in base:
+    What would you like to do?
 
 As You can see there is nothing in this list (as mentioned above), lets add something to our library:
 > **add movie**
