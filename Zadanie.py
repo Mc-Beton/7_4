@@ -4,6 +4,7 @@ from series import Series
 from library import Library
 from library import search_list
 from library import top_list
+from library import seaso
 
 
 base_list = Library()
@@ -59,8 +60,9 @@ def task():
                 print("There is no such list")
 
         elif task1 == "play":
+            seaso.clear()
             base_list.play_sth()
-                
+
         elif task1 == "add movie":
             base_list.add_movie()
         

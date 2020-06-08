@@ -99,7 +99,7 @@ class Library:
                     if str(k.season) == seas and str(k.episode) == epi:
                         k.play()
                         print(f"You've seen this for the {k.current_views} time")
-                        break
+                break
             elif isinstance(i, Movie):
                 i.play()
                 print(f"You've seen this for the {i.current_views} time")
