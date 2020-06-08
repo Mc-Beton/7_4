@@ -32,14 +32,57 @@ And there shows up the first line greeting us with a tip, how to get started.
 First of all, this is currently a project which **doesn't store information for later use** (doesn't save the given information in a file), so it's only to check whether all the given commands really work.
 ### Examples
 Lets turn it on:
-> python zadanie.py
+> **python zadanie.py**
 
 And there we get greetings from the program and a small assist how get started.
 > Hello! I am a simple program to do some stuff. Wanna check me out? Type in help_me for commands ;)
 What would you like to do? 
 
-Break down into end to end tests
-Explain what these tests test and why
+Lets start with "**movie list**".
+> List of movies in base:
+What would you like to do?
+
+As You can see there is nothing in this list (as mentioned above), lets add something to our library:
+> **add movie**
+
+Here we will be asked some questions about the content we want to add, lets say we like the first Avengers:
+> What is the title? **Avengers** 
+What year was it made? **2012**
+What type of movie is it? **Sci Fi**
+
+And here we go. Our first position in our library. Lets check it out if it's still there:
+> **movie list**
+List of movies in base:
+Avengers, 2012, Sci Fi
+
+Lest try some series:
+> **add series**
+
+Here we go again just like with a movie but it will ask for more information:
+> What is the title? **Dark**
+What year was it made? **2018**
+What type of series is it? **Sci Fi**
+How many seasons does it have? **2**
+How many episodes does season 1 have? **6**
+How many episodes does season 2 have? **7**
+
+And how does it look like in our library:
+> **series list**
+List of series in base:
+Dark S1E1
+Dark S1E2
+Dark S1E3
+Dark S1E4
+Dark S1E5
+Dark S1E6
+Dark S2E1
+Dark S2E2
+Dark S2E3
+Dark S2E4
+Dark S2E5
+Dark S2E6
+Dark S2E7
+
 
 Give an example
 And coding style tests
