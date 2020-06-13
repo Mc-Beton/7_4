@@ -1,6 +1,7 @@
 from movie import Movie
 from series import Series
 import random
+import csv
 
 top_list=[]
 search_list=[]
@@ -8,24 +9,26 @@ seaso=[]
 class Library:
     def __init__(self):       
         self.video_lib = []
+    
+
 
     # Function to add movies to base list
-    def add_movie(self):
-        i = input("What is the title? ")
-        j = input("What year was it made? ")
-        k = input("What type of movie is it? ")
+    def add_movie(self, i, j, k):
         self.video_lib.append(Movie(title = i, year = j, gener = k))
+        with open('movie_lib.csv', 'a', newline='') as csvfile:
+            fieldnames = ['Title', 'Year', 'Type']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            
+            writer.writerow({'Title':i, 'Year':j, 'Type':k})
     
     # Function to add series to base
-    def add_series(self):
-        i = input("What is the title? ")
-        j = input("What year was it made? ")
-        k = input("What type of series is it? ")
-        l = int(input("How many seasons does it have? "))
-        for s in range(l):
-            m = int(input(f"How many episodes does season {s+1} have? "))
-            for e in range(m):
-                self.video_lib.append(Series(title = i, year = j, gener = k, season = str(s+1), episode = str(e+1)))
+    def add_series(self, i, j, k, h, n):
+        self.video_lib.append(Series(title = i, year = j, gener = k, season = h, episode = n))
+        with open('series_lib.csv', 'a', newline='') as csvfile:
+            fieldnames = ['Title', 'Year', 'Type', 'Seasons', 'Episode']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            
+            writer.writerow({'Title':i, 'Year':j, 'Type':k, 'Seasons':h, 'Episode':n})
 
     # Function to print objects from class only Movie
     def get_movies(self):
@@ -45,49 +48,34 @@ class Library:
 
     
     # Search function
-    def search(self):
-        by_what = input("Choose what You ar elooking for: title, type, year ")
+    def search(self, by_what, name):  
         if by_what == "title":
-            name = input("Type in the title you are looking for ")
             for i in self.video_lib:
                 if str(i.title) == name:
                     search_list.append(i)
             return search_list
         if by_what == "type":
-            name = input("What type of movie/series you are looking for ")
             for i in self.video_lib:
                 if str(i.gener) == name:
                     search_list.append(i)
             return search_list
         if by_what == "year":
-            name = input("What year of production you are looking for ")
             for i in self.video_lib:
                 if str(i.year) == name:
                     search_list.append(i)
             return search_list
 
     # Top x movies/seriesshown by current_views
-    def top_titles(self, content_type):
+    def top_titles(self, content_type, amount):
         top = [i for i in self.video_lib if i.__class__.__name__ == content_type.__name__]
         top = sorted(top, key=lambda content_type: content_type.current_views, reverse=True)
-        n=0
-        a=int(input("How long shall the list be? "))
-        top_list = top[:a]
+        top_list = top[:amount]
         for i in top_list:
             print(f"{i} with views {i.current_views}")
         return top_list
         
-    
-    def generate_views(self):
-        for k in range(10):
-            i = random.choice(self.video_lib)
-            j = random.choice(range(101))
-            i.play(j)
-            #print(i)
-            #print(i.current_views)
-    
-    def play_sth(self):
-        a = input("What movie/seires would you like to watch? ")
+        
+    def play_sth(self, a):
         for i in self.video_lib:
             if str(i.title) == a:
                 seaso.append(i)
